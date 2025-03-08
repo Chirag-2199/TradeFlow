@@ -138,19 +138,19 @@
                 <!-- Duplicate the image set for seamless looping -->
                 <div class="flex space-x-16 px-4 items-center">
                     <!-- Client Logos - Update these with your actual logos -->
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
                     <!-- Duplicate the first set -->
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="Client logo" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="Client logo" class="h-48 opacity-70 hover:opacity-100 transition-opacity">
                 </div>
             </div>
         </div>
