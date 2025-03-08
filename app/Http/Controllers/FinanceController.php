@@ -8,7 +8,7 @@ class FinanceController extends Controller
 {
     public function index()
     {
-        return view('finance.index');
+        return view('pages.finance');
     }
 
     public function create()
