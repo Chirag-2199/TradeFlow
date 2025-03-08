@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\ProfileController; // Add this line
 
 // Home Route
 Route::get('/', function () {
@@ -26,7 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // User Profile & Settings
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Updated
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Added
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 
     // Reports & Notifications
@@ -40,5 +42,5 @@ Route::middleware(['auth'])->group(function () {
 
     // Finance Management
     Route::get('/finance', [FinanceController::class, 'index'])->name('finance');
+    Route::get('/finance/reports', [FinanceController::class, 'reports'])->name('finance.reports');
 });
-

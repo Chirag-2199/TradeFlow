@@ -30,6 +30,10 @@ class FinanceController extends Controller
     {
         return view('finance.edit');
     }
+    public function reports()
+{
+    return view('finance.reports');
+}
 
     public function update(Request $request, $id)
     {

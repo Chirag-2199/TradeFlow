@@ -15,6 +15,10 @@ class DashboardController extends Controller
     {
         return view('pages.profile');
     }
+    public function Userprofile()
+    {
+        return view('pages.profile');
+    }
 
     public function settings()
     {
