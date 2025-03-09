@@ -13,7 +13,7 @@ class StockController extends Controller
 
     public function create()
     {
-        return view('stocks.create');
+        return view('pages.stock.create');
     }
 
     public function store(Request $request)
