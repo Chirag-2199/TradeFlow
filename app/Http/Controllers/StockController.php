@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Stock;
 
 class StockController extends Controller
 {
     public function index()
     {
-        return view('pages.stock');
+        $stocks = Stock::all();
+        return view('pages.stock', compact('stocks'));
     }
 
     public function create()
@@ -18,26 +20,56 @@ class StockController extends Controller
 
     public function store(Request $request)
     {
-        // Logic to store stock
+        $request->validate([
+            'item_name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:1',
+            'supplier' => 'nullable|string|max:255',
+            'purchase_date' => 'nullable|date',
+            'unit_price' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+        ]);
+
+        Stock::create($request->all());
+
+        return redirect()->route('stocks.index')->with('success', 'Stock item added successfully!');
     }
 
     public function show($id)
     {
-        return view('stocks.show');
+        $stocks = Stock::findOrFail($id);
+        return view('pages.stock.show', compact('stocks'));
     }
 
     public function edit($id)
     {
-        return view('stocks.edit');
+        $stock = Stock::findOrFail($id);
+        return view('pages.stock.edit', compact('stock'));
     }
 
     public function update(Request $request, $id)
     {
-        // Logic to update stock
+        $request->validate([
+            'item_name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:1',
+            'supplier' => 'nullable|string|max:255',
+            'purchase_date' => 'nullable|date',
+            'unit_price' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+        ]);
+
+        $stock = Stock::findOrFail($id);
+        $stock->update($request->all());
+
+        return redirect()->route('stocks.index')->with('success', 'Stock item updated successfully!');
     }
 
     public function destroy($id)
     {
-        // Logic to delete stock
+        $stock = Stock::findOrFail($id);
+        $stock->delete();
+
+        return redirect()->route('stocks.index')->with('success', 'Stock item deleted successfully!');
     }
 }

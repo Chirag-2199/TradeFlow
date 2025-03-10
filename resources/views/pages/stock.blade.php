@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeFlow - Stock Management</title>
+    <title>Stock Details - TradeFlow</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,148 +12,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        @keyframes line-scroll {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .animate-line-scroll {
-            animation: line-scroll 20s linear infinite;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-
 <body class="bg-white">
     <header class="bg-[#23297f] text-white py-4 px-6 shadow-xl">
         <div class="flex items-center justify-between max-w-7xl mx-auto">
-            <div class="flex items-center space-x-12">
-                <img src="{{ asset('images/logo1.png') }}" alt="TradeFlow Logo" class="h-20 w-auto">
-                <nav class="hidden md:block">
-                    <ul class="flex space-x-8">
-                        <li><a href="{{ route('dashboard') }}" class="hover:text-blue-200 transition-colors duration-300">Dashboard</a></li>
-                        <li><a href="{{ route('clients.index') }}" class="hover:text-blue-200 transition-colors duration-300">Clients</a></li>
-                        <li><a href="{{ route('stocks.index') }}" class="hover:text-blue-200 transition-colors duration-300 font-semibold">Stock</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="flex items-center space-x-6">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="bg-white text-[#23297f] px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg">
-                        Logout
-                    </button>
-                </form>
-            </div>
+            <img src="{{ asset('images/logo1.png') }}" alt="TradeFlow Logo" class="h-20 w-auto">
+            <a href="{{ route('stocks.create') }}" class="text-white hover:text-blue-200 transition">+ Add New Stock</a>
         </div>
     </header>
 
-    <main class="bg-gradient-to-b from-white to-gray-50 min-h-screen py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center mb-8">
-                <h1 class="text-4xl font-bold text-[#23297f]">Inventory Management</h1>
-                <a href="{{ route('stocks.create') }}" class="bg-[#23297f] text-white px-6 py-3 rounded-lg hover:bg-[#1a1f5f] transition-colors duration-300 shadow-lg">
-                    + Add New Stock
-                </a>
-            </div>
+    <main class="max-w-7xl mx-auto py-12 px-6">
+        <div class="bg-white shadow-lg rounded-xl p-8">
+            <h1 class="text-3xl font-bold text-[#23297f] mb-6">Stock Inventory</h1>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Stock Overview Card -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="text-[#23297f] text-2xl font-bold mb-2">5,432</div>
-                    <div class="text-gray-600">Total Items in Stock</div>
-                    <div class="mt-4 pt-2 border-t border-gray-100">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-green-500">📈 24% Restock</span>
-                            <span class="text-red-500">📉 8% Low Stock</span>
-                        </div>
-                    </div>
+            @if(session('success'))
+                <div class="bg-green-100 text-green-700 px-4 py-2 rounded-lg mb-4">
+                    {{ session('success') }}
                 </div>
+            @endif
 
-                <!-- Stock Categories -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-lg font-semibold text-[#23297f] mb-4">Stock Categories</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
-                            <span>🔩 Raw Materials</span>
-                            <span class="bg-[#23297f]/10 text-[#23297f] px-2 py-1 rounded-full text-sm">1,234</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
-                            <span>📦 Finished Goods</span>
-                            <span class="bg-[#23297f]/10 text-[#23297f] px-2 py-1 rounded-full text-sm">892</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
-                            <span>🛠️ Spare Parts</span>
-                            <span class="bg-[#23297f]/10 text-[#23297f] px-2 py-1 rounded-full text-sm">567</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-lg font-semibold text-[#23297f] mb-4">Quick Actions</h3>
-                    <div class="space-y-3">
-                        <a href="#" class="block p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                            📥 Receive Stock
-                        </a>
-                        <a href="#" class="block p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                            📤 Export Inventory
-                        </a>
-                        <a href="#" class="block p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                            📋 Stock Take
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Recent Stock Movements -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg md:col-span-3">
-                    <h3 class="text-lg font-semibold text-[#23297f] mb-4">Recent Stock Movements</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="p-4 bg-blue-50 rounded-lg">
-                            <div class="flex items-center mb-2">
-                                <div class="bg-[#23297f] text-white p-2 rounded-full mr-3">
-                                    📥
-                                </div>
-                                <div>
-                                    <div class="font-medium">Steel Plates</div>
-                                    <div class="text-sm text-gray-500">+500 units</div>
-                                </div>
-                            </div>
-                            <div class="text-sm text-gray-600">Received from Supplier A</div>
-                            <div class="text-xs text-gray-500 mt-2">2 hours ago</div>
-                        </div>
-                        <div class="p-4 bg-blue-50 rounded-lg">
-                            <div class="flex items-center mb-2">
-                                <div class="bg-[#23297f] text-white p-2 rounded-full mr-3">
-                                    📤
-                                </div>
-                                <div>
-                                    <div class="font-medium">Finished Goods</div>
-                                    <div class="text-sm text-gray-500">-200 units</div>
-                                </div>
-                            </div>
-                            <div class="text-sm text-gray-600">Shipped to Client X</div>
-                            <div class="text-xs text-gray-500 mt-2">5 hours ago</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <table class="w-full border-collapse border border-gray-200 shadow-lg">
+                <thead>
+                    <tr class="bg-[#23297f] text-white">
+                        <th class="border border-gray-300 px-4 py-2">ID</th>
+                        <th class="border border-gray-300 px-4 py-2">Item Name</th>
+                        <th class="border border-gray-300 px-4 py-2">Category</th>
+                        <th class="border border-gray-300 px-4 py-2">Quantity</th>
+                        <th class="border border-gray-300 px-4 py-2">Supplier</th>
+                        <th class="border border-gray-300 px-4 py-2">Purchase Date</th>
+                        <th class="border border-gray-300 px-4 py-2">Unit Price</th>
+                        <th class="border border-gray-300 px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($stocks as $stock)
+                        <tr class="hover:bg-gray-100 transition">
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->id }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->item_name }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->category }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->quantity }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->supplier }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $stock->purchase_date }}</td>
+                            <td class="border border-gray-300 px-4 py-2">${{ $stock->unit_price }}</td>
+                            <td class="border border-gray-300 px-4 py-2 flex space-x-2">
+                                <a href="{{ route('stocks.show', ['stock' => $stock->id]) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">View</a>
+                                <a href="{{ route('stocks.edit', $stock->id) }}" class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition">Edit</a>
+                                <form method="POST" action="{{ route('stocks.destroy', $stock->id) }}" onsubmit="return confirm('Are you sure?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    @if($stocks->isEmpty())
+                        <tr>
+                            <td colspan="8" class="text-center text-gray-500 py-4">No stock items found.</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
         </div>
     </main>
 
-    <footer class="bg-[#23297f] text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex flex-col md:flex-row justify-center gap-8 mb-8">
-                <a href="#" class="hover:text-blue-200 transition-colors">Inventory Docs</a>
-                <a href="#" class="hover:text-blue-200 transition-colors">Suppliers</a>
-                <a href="#" class="hover:text-blue-200 transition-colors">Logistics</a>
-                <a href="#" class="hover:text-blue-200 transition-colors">Quality Control</a>
-            </div>
-            <p class="text-blue-200 text-sm">&copy; 2023 TradeFlow. All rights reserved.</p>
-        </div>
+    <footer class="bg-[#23297f] text-white py-12 text-center">
+        <p class="text-blue-200 text-sm">&copy; {{ date('Y') }} TradeFlow. All rights reserved.</p>
     </footer>
 </body>
 </html>
