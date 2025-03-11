@@ -7,13 +7,15 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\FinanceController;
-use App\Http\Controllers\ProfileController; // Add this line
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BenchController;
 
 // Home Route
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/bench/{type}/{id}', [BenchController::class, 'edit'])->name('bench.edit'); // Show Edit Page
+Route::post('/bench/{type}/{id}', [BenchController::class, 'update'])->name('bench.update');
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
@@ -28,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     // User Profile & Settings
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Updated
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Added
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 
