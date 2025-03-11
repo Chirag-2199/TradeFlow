@@ -19,6 +19,7 @@ return new class extends Migration
         $table->string('supplier')->nullable();
         $table->date('purchase_date')->nullable();
         $table->decimal('unit_price', 10, 2)->nullable();
+        $table->string('email');
         $table->text('description')->nullable();
         $table->timestamps();
     });

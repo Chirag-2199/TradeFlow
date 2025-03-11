@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StockAddedMail;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 
@@ -20,7 +22,7 @@ class StockController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'item_name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',
@@ -28,9 +30,19 @@ class StockController extends Controller
             'purchase_date' => 'nullable|date',
             'unit_price' => 'nullable|numeric|min:0',
             'description' => 'nullable|string',
+            'email' => 'required|email'
+        ]);
+        
+        $stock = Stock::create([
+            'name' => $validated['name'],
+            'quantity' => $validated['quantity'],
+            'price' => $validated['price'],
+            'category' => $validated['category'],
+            'email' => $validated['email']
         ]);
 
         Stock::create($request->all());
+        Mail::to($validated['email'])->send(new StockAddedMail($stock));
 
         return redirect()->route('stocks.index')->with('success', 'Stock item added successfully!');
     }
