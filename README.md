@@ -1,66 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TradeFlow CRM/ERP
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**TradeFlow** is a powerful CRM/ERP system built using PHP and Laravel, designed to streamline and manage your business operations including team management, clients, stock control, employee hierarchy, finance, and more.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Built%20With-Laravel-red?style=for-the-badge&logo=laravel)
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=for-the-badge)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Features (Planned & Implemented)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### ✅ Core Modules
+- [x] User Authentication (Login/Register)
+- [x] Welcome Page with UI
+- [x] Team Management
+- [x] Role-Based Access Control
+- [x] User Search with Livewire
+- [ ] Dynamic Team Assignments
+- [ ] Team Members Listing
 
-## Learning Laravel
+### 🔜 Upcoming Modules
+- [ ] Client Management
+- [ ] Product & Stock Management
+- [ ] Invoice & Billing
+- [ ] Finance Tracker (Expenses/Income)
+- [ ] Employee Performance and Hierarchy
+- [ ] Notifications System
+- [ ] WebSocket Integration for Real-Time Updates
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🧱 Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Layer             | Technology                  |
+|------------------|-----------------------------|
+| Backend           | PHP 8+, Laravel 10          |
+| Frontend          | Blade Templates, Tailwind CSS |
+| Interactivity     | Livewire                    |
+| Database          | MySQL                       |
+| Auth              | Laravel Breeze              |
+| Version Control   | Git, GitHub                 |
+| Realtime (Planned)| WebSockets, Laravel Echo    |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📁 Project Structure
 
-### Premium Partners
+```
+TradeFlow/
+├── app
+│   ├── Console
+│   ├── Exceptions
+│   ├── Http
+│   ├── Livewire        # Livewire components
+│   ├── Models          # Eloquent models
+│   └── Providers
+├── bootstrap
+├── config
+├── database
+│   ├── factories
+│   ├── migrations      # Migrations for DB tables
+│   └── seeders
+├── public             # Public assets
+├── resources
+│   ├── css
+│   ├── js
+│   └── views           # Blade templates
+├── routes
+│   └── web.php         # Route definitions
+├── storage
+├── tests
+└── ...
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## 🛠️ Setup Instructions
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Clone the repo**
 
-## Code of Conduct
+```bash
+git clone https://github.com/Chirag-2199/TradeFlow.git
+cd TradeFlow
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Install dependencies**
 
-## Security Vulnerabilities
+```bash
+composer install
+npm install && npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **Configure environment**
 
-## License
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Set up database**
+
+```bash
+php artisan migrate
+```
+
+5. **Run the app**
+
+```bash
+php artisan serve
+```
+
+---
+
+## 👨‍💻 Developer
+
+**Chirag Dhimgra**  
+💼 Full-stack Developer  
+🌐 [GitHub](https://github.com/Chirag-2199)  
+💼 [LinkedIn](https://www.linkedin.com/in/chiragk2199/)  
+📧 chiragkumar2199@gmail.com  
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!  
+Please fork the repository and create a pull request, or open an issue to discuss changes.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## ❤️ Acknowledgments
+
+- Laravel Team  
+- Livewire Community  
+- Tailwind CSS  
+- All open-source contributors
